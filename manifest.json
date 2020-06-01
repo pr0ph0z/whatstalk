@@ -1,0 +1,11 @@
+{
+    "manifest_version": 2,
+    "name": "whatstalk",
+    "version": "0.1",
+    "description": "Track WhatsApp status",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "author": "Mohamad Radisha <pr0ph0z23@gmail.com>"
+}
