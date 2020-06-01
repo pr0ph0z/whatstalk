@@ -7,5 +7,9 @@
         "storage",
         "activeTab"
     ],
+    "content_scripts": [{
+        "matches": ["https://web.whatsapp.com"],
+        "js": ["js/inject.js"]
+    }],
     "author": "Mohamad Radisha <pr0ph0z23@gmail.com>"
 }
