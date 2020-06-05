@@ -1,5 +1,5 @@
 function loop () {
-    if (!document.getElementById("main")) {
+    if (!document.querySelector(".two")) {
         setTimeout(loop, 1000);
     } else {
         init()
@@ -11,13 +11,22 @@ function init () {
         mutations.forEach(async function (mutation) {
             const status = await getStatus()
             if (status) {
-                console.log(mutation.target.textContent)
+                if (mutation.type === 'characterData') {
+                    console.log(mutation.target.textContent)
+                }
             }
         })
     })
     
-    mutationObserver.observe(document.querySelector('#main > header > div>div>span'), {
-        attributes: true
+    // for debugging. will delete later
+    mutationObserver.observe(document.querySelector('#app > div > div'), {
+        childList: true,
+        attributes: true,
+        characterData: true,
+        subtree: true,
+        attributeFilter: ['one', 'two'],
+        attributeOldValue: true,
+        characterDataOldValue: true          
     })
 }
 
