@@ -11,15 +11,19 @@ function init () {
         mutations.forEach(async function (mutation) {
             const status = await getStatus()
             if (status) {
-                if (mutation.type === 'characterData') {
-                    console.log(mutation.target.textContent)
+                if (mutation.type === 'characterData' && mutation.target.textContent === 'online') {
+                    console.log(mutation.target.textContent, new Date())
                 }
             }
         })
     })
     
     mutationObserver.observe(document.querySelector('#app > div > div'), {
-        characterData: true
+        attributes: true,
+        characterData: true,
+        subtree: true,
+        attributeOldValue: true,
+        characterDataOldValue: true          
     })
 }
 
