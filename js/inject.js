@@ -18,15 +18,8 @@ function init () {
         })
     })
     
-    // for debugging. will delete later
     mutationObserver.observe(document.querySelector('#app > div > div'), {
-        childList: true,
-        attributes: true,
-        characterData: true,
-        subtree: true,
-        attributeFilter: ['one', 'two'],
-        attributeOldValue: true,
-        characterDataOldValue: true          
+        characterData: true
     })
 }
 
