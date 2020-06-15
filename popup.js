@@ -1,15 +1,20 @@
-const button = document.getElementById("switch")
-button.addEventListener('click', switchStatus)
+const switchButton = document.getElementById("switch")
+const historyButton = document.getElementById("history")
+switchButton.addEventListener('click', switchStatus)
+historyButton.addEventListener('click', () => {
+    chrome.tabs.create({ url: chrome.extension.getURL('history.html') })
+})
+
 getStatus()
     .then(status => {
-        setButtonStatus(button, status)
+        setButtonStatus(switchButton, status)
     })
 
 async function switchStatus () {
     const currentStatus = await getStatus()
     
     await setStatus(!currentStatus)
-    setButtonStatus(button, !currentStatus)
+    setButtonStatus(switchButton, !currentStatus)
 }
 
 async function getStatus () {
