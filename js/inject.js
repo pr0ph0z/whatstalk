@@ -23,6 +23,7 @@ function chatClick () {
         attributes: true,
         characterData: true,
         subtree: true,
+        attributeFilter: ['one', 'two'],
         attributeOldValue: true,
         characterDataOldValue: true          
     })
