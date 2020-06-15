@@ -1,17 +1,16 @@
-function loop () {
-    if (!document.querySelector(".two")) {
-        setTimeout(loop, 1000);
-    } else {
-        init()
-    }
-}
+const textToWatch = ['online', 'typing…']
+let observer
 
-function init () {
-    const mutationObserver = new MutationObserver(function (mutations) {
+function chatClick () {
+    if (observer instanceof MutationObserver) {
+        observer.disconnect()
+    }
+
+    observer = new MutationObserver(function (mutations) {
         mutations.forEach(async function (mutation) {
             const status = await getStatus()
             if (status) {
-                if (mutation.type === 'characterData') {
+                if (mutation.type === 'characterData' && textToWatch.includes(mutation.target.textContent)) {
                     console.log(mutation.target.textContent)
                 }
             }
@@ -19,7 +18,7 @@ function init () {
     })
     
     // for debugging. will delete later
-    mutationObserver.observe(document.querySelector('#app > div > div'), {
+    observer.observe(document.querySelector('#app > div > div'), {
         childList: true,
         attributes: true,
         characterData: true,
@@ -28,6 +27,17 @@ function init () {
         attributeOldValue: true,
         characterDataOldValue: true          
     })
+
+    console.log(document.querySelector('#main > header > div>div>span').textContent)
+}
+
+function loop () {
+    if (!document.querySelector("#side")) {
+        setTimeout(loop, 1000);
+    } else {
+        const chatListElement = document.querySelector('#pane-side > div > div > div')
+        chatListElement.addEventListener('click', chatClick)
+    }
 }
 
 async function getStatus () {
