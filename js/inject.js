@@ -1,17 +1,16 @@
-function loop () {
-    if (!document.querySelector(".two")) {
-        setTimeout(loop, 1000);
-    } else {
-        init()
-    }
-}
+const textToWatch = ['online', 'typing…']
+let observer
 
-function init () {
-    const mutationObserver = new MutationObserver(function (mutations) {
+function chatClick () {
+    if (observer instanceof MutationObserver) {
+        observer.disconnect()
+    }
+
+    observer = new MutationObserver(function (mutations) {
         mutations.forEach(async function (mutation) {
             const status = await getStatus()
             if (status) {
-                if (mutation.type === 'characterData' && mutation.target.textContent === 'online') {
+                if (mutation.type === 'characterData' && textToWatch.includes(mutation.target.textContent)) {
                     const name = document.querySelectorAll('#main > header > div > div > div > span')[1].textContent
                     await insertChatData({ name: name, message: mutation.target.textContent, time: new Date().toISOString()})
                     console.log(mutation.target.textContent, new Date())
@@ -20,13 +19,27 @@ function init () {
         })
     })
     
-    mutationObserver.observe(document.querySelector('#app > div > div'), {
+    // for debugging. will delete later
+    observer.observe(document.querySelector('#app > div > div'), {
+        childList: true,
         attributes: true,
         characterData: true,
         subtree: true,
+        attributeFilter: ['one', 'two'],
         attributeOldValue: true,
         characterDataOldValue: true          
     })
+
+    console.log(document.querySelector('#main > header > div>div>span').textContent)
+}
+
+function loop () {
+    if (!document.querySelector("#side")) {
+        setTimeout(loop, 1000);
+    } else {
+        const chatListElement = document.querySelector('#pane-side > div > div > div')
+        chatListElement.addEventListener('click', chatClick)
+    }
 }
 
 async function getStatus () {
