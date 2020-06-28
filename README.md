@@ -8,7 +8,7 @@ and [this gist](https://gist.github.com/parthpower/d0fb6a1196fd8cefebde#whatsapp
 ## How to install this extension?
 1. Download the files. You can clone this repository by `git clone` or just simply download the files from [release page](https://github.com/pr0ph0z/whatstalk/releases)
 2. Extract
-3. Go to `chrome://extension` and make sure to enable developer mode
+3. Go to `chrome://extensions` and make sure to enable developer mode
 4. Click the `Load Unpacked` button and locate it to the directory where you extract/clone
 
 ## Ok I have installed the extension, how do I use it?
