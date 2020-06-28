@@ -13,7 +13,6 @@ function chatClick () {
                 if (mutation.type === 'characterData' && textToWatch.includes(mutation.target.textContent)) {
                     const name = document.querySelectorAll('#main > header > div > div > div > span')[1].textContent
                     await insertChatData({ name: name, message: mutation.target.textContent, time: new Date().toISOString()})
-                    console.log(mutation.target.textContent, new Date())
                 }
             }
         })
