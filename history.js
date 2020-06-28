@@ -3,7 +3,7 @@ const wrapper = document.getElementById('wrapper')
 getChatData()
     .then(qwe => {
         new gridjs.Grid({
-            columns: ["ID", "Name", "Message", "Time"],
+            columns: ["ID", "Message", "Name", "Time"],
             data: qwe.map(data => {
                 data.time = new Date(data.time).toLocaleString()
                 return Object.values(data)
