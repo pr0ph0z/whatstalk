@@ -1,5 +1,15 @@
+const tableElement = document.querySelector('table')
+const wrapper = document.getElementById('wrapper')
 getChatData()
-    .then(qwe => console.log(qwe))
+    .then(qwe => {
+        new gridjs.Grid({
+            columns: ["ID", "Name", "Message", "Time"],
+            data: qwe.map(data => {
+                data.time = new Date(data.time).toLocaleString()
+                return Object.values(data)
+            })
+          }).render(document.getElementById("wrapper"));          
+    })
 const insertButton = document.getElementById('insert')
 insertButton.addEventListener('click', insertButtonHandler)
 
@@ -30,4 +40,22 @@ async function getChatData() {
     }
 
     return chatData
+}
+
+function createTable(tableElement, tableData) {
+    const tableBody = document.createElement('tbody')
+
+    tableData.forEach(function (rowData) {
+        const row = document.createElement('tr')
+
+        for (const historyData in rowData) {
+            const cell = document.createElement('td')
+            cell.appendChild(document.createTextNode(rowData[historyData]))
+            row.appendChild(cell)
+        }
+
+        tableBody.appendChild(row)
+    })
+
+    tableElement.appendChild(tableBody)
 }
