@@ -29,8 +29,6 @@ function chatClick () {
         attributeOldValue: true,
         characterDataOldValue: true          
     })
-
-    console.log(document.querySelector('#main > header > div>div>span').textContent)
 }
 
 function loop () {
