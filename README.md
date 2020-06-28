@@ -1,7 +1,7 @@
 # whatstalk
 
 ## So, what is whatstalk?
-whatstalk is a Chrome extension to monitor user activity in Whatsapp Web.
+whatstalk is a Chrome extension to monitor user activity in Whatsapp Web. It simply records online history of a user you choose to be monitored.
 This project is highly influenced by [whatsapp_stalker](https://github.com/supernova13892/whatsapp_stalker)
 and [this gist](https://gist.github.com/parthpower/d0fb6a1196fd8cefebde#whatsapp-on-web-monitor).
 
