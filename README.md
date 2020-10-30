@@ -19,3 +19,6 @@ Of course, there are. This extension is heavily relying on Whatsapp Web itself s
 
 ## Can I contribute?
 Absolutely yes. Please check [Issues tab](https://github.com/pr0ph0z/whatstalk/issues) if you fit with one of some issues there or if you have any ideas or found bugs just create an issue and make a pull request.
+
+## Disclaimer
+Please use this at your own discretion. I made this extension was for educational purposes only. As the author of this project, I'm not responsible for any problems caused.
